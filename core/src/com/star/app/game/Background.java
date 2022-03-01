@@ -27,7 +27,7 @@ public class Background {
 
             if (position.x < -200) {
                 position.x = SCREEN_WIDTH + 200;
-                position.y = MathUtils.random(0, SCREEN_HEIGHT);
+                position.y = MathUtils.random(-50, SCREEN_HEIGHT+50);
                 scale = Math.abs(velocity.x / 40f) * 0.8f;
             }
         }

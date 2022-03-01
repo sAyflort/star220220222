@@ -47,11 +47,11 @@ public class Hero {
     public void update(float dt) {
         fireTimer += dt;
         if (Gdx.input.isKeyPressed(Input.Keys.SPACE)) {
-            if (true) {
+            if (fireTimer > 0.2f) {
                 fireTimer = 0.0f;
                 gc.getBulletController().setup(position.x, position.y,
                         MathUtils.cosDeg(angle) * 500 + velocity.x,
-                        MathUtils.sinDeg(angle) * 500 + velocity.y );
+                        MathUtils.sinDeg(angle) * 500 + velocity.y);
             }
         }
         if (Gdx.input.isKeyPressed(Input.Keys.A)) {
@@ -67,6 +67,9 @@ public class Hero {
         if (Gdx.input.isKeyPressed(Input.Keys.S)) {
             velocity.x -= MathUtils.cosDeg(angle) * enginePower * 0.5 * dt;
             velocity.y -= MathUtils.sinDeg(angle) * enginePower * 0.5 * dt;
+        }
+        if (Gdx.input.isKeyPressed(Input.Keys.O)) {
+            gc.getAsteroidControlled().setup(MathUtils.random(0, ScreenManager.SCREEN_WIDTH), MathUtils.random(0, ScreenManager.SCREEN_HEIGHT),  MathUtils.random(0f, 1f));
         }
 
         position.mulAdd(velocity, dt);
